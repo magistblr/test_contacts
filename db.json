@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "account": [
+    {
+    "id": 1,
+    "email": "men@gmail.com",
+    "password": "admin"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Jack",
+      "email": "jackmel@gmail.com",
+      "tel": "+7(385)5324564"
+    },
+    {
+      "id": 2,
+      "name": "Ivan",
+      "email": "vanya637@gmail.com",
+      "tel": "+7(312)5648690"
+    },
+    {
+      "id": 3,
+      "name": "Black",
+      "email": "bomjs@gmail.com",
+      "tel": "+7(353)6573412"
+    },
+    {
+      "id": 4,
+      "name": "Victor",
+      "email": "volk52@gmail.com",
+      "tel": "+7(343)6578497"
+    },
+    {
+      "id": 5,
+      "name": "Ivan231",
+      "email": "vanya637@gmail.com",
+      "tel": "+7(312)5648787"
+    },
+    {
+      "id": 6,
+      "name": "Jack4",
+      "email": "jackmel@gmail.com5",
+      "tel": "+7(385)5324564"
+    }
+  ]
+}

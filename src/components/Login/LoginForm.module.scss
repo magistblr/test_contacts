@@ -1,0 +1,41 @@
+.form{
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input{
+  width: 300px;
+  height: 55px;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.479);
+  box-sizing: border-box;
+}
+
+.required{
+  color: red
+}
+
+
+.text{
+  margin-left: 10px;
+}
+
+.button{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.input:hover {
+  box-shadow: 0 0 5px 2px rgb(161, 161, 161);
+}
+
+
+.errorMessage{
+  margin-top: 20px;
+  font-size: 18px;
+  color: red
+}

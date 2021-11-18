@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { userAPI } from './api/authApi';
+import './App.module.scss';
+import { Contacts } from './components/Contacts/Contacts';
+import { Error } from './components/Error/Error';
+import { Header } from './components/Header/Header';
+import { Login } from './components/Login/Login';
+import { AuthContext } from './context';
 
-function App() {
+export const App = () => {
+
+  const [isAuth, setIsAuth] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false)
+
+const getAuth = () => {
+  userAPI.login()
+  .then(res => {
+    console.log(res);
+    if(res.email === "men@gmail.com" && res.password === "admin"){
+      setIsAuth(true)
+    } else setError(true)
+  })
+}
+
+
+  const onLogout = () => {
+    setIsAuth(false)
+  }
+
+  useEffect(() => {
+    if(!error){
+      setTimeout(() => {
+        setError(false)
+      }, 3000);
+    }
+  }, [error])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AuthContext.Provider value={{
+        isAuth,
+        setIsAuth
+      }}>
+        <BrowserRouter>
+          <div className="App">
+            <Header onLogout={onLogout} isAuth={isAuth}></Header>
+            <Routes>
+                <Route path='/'  element={<Login/>}/>
+                <Route path='login'  element={<Login/>}/>
+                <Route path="contacts" element={<Contacts/>}/>
+                <Route path="*" element={<h1>404: PAGE NOT FOUND</h1>} />
+            </Routes>
+            <button onClick={getAuth}>POST</button>
+            {error && <Error/>}
+          </div>
+        </BrowserRouter>
+      </AuthContext.Provider>
   );
 }
 
-export default App;
